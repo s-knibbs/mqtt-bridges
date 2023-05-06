@@ -1,0 +1,17 @@
+[package]
+name = "mqtt-ir-bridge"
+description = "Convert IR keycodes to mqtt messages" 
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rumqttc = "0.20.0"
+evdev = { version = "0.12.1", features = ["tokio"] }
+tokio = { version = "1.0", features = ["rt", "macros"] }
+
+[profile.release]
+opt-level = 'z'
+lto = true
+codegen-units = 1

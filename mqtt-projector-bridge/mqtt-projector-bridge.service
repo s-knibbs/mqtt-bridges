@@ -1,0 +1,15 @@
+[Unit]
+Description=Service to control a projector via MQTT
+Wants=network-online.target
+After=network-online.target time-sync.target
+
+[Service]
+EnvironmentFile=-/etc/default/mqtt-projector-bridge.conf
+ExecStart=/usr/local/bin/mqtt-projector-bridge
+Restart=on-failure
+StandardOutput=syslog
+StandardError=inherit
+StartLimitInterval=0
+
+[Install]
+WantedBy=multi-user.target

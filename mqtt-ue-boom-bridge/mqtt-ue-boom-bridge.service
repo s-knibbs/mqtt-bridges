@@ -1,0 +1,15 @@
+[Unit]
+Description=UE Boom MQTT Bridge Client
+Wants=network-online.target
+After=network-online.target time-sync.target
+
+[Service]
+EnvironmentFile=-/etc/default/mqtt-ue-boom-bridge
+ExecStart=/usr/local/bin/mqtt-ue-boom-bridge
+Restart=on-failure
+StandardOutput=syslog
+StandardError=inherit
+StartLimitInterval=0
+
+[Install]
+WantedBy=multi-user.target

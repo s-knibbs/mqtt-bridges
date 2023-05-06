@@ -1,0 +1,12 @@
+[Unit]
+Description=Onkyo RI MQTT Bridge Client
+Documentation=http://example.com
+After=network-online.target syslog.target
+
+[Service]
+EnvironmentFile=-/etc/default/onkyo-mqtt-bridge
+ExecStart=/usr/local/bin/onkyo-mqtt-bridge
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

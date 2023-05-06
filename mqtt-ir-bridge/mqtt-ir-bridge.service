@@ -1,0 +1,15 @@
+[Unit]
+Description=Forward IR events as MQTT messages
+Wants=network-online.target
+After=network-online.target time-sync.target
+
+[Service]
+EnvironmentFile=-/etc/default/mqtt-ir-bridge.conf
+ExecStart=/usr/local/bin/mqtt-ir-bridge
+Restart=on-failure
+StandardOutput=syslog
+StandardError=inherit
+StartLimitInterval=0
+
+[Install]
+WantedBy=multi-user.target
